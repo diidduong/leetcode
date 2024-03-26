@@ -46,58 +46,15 @@ Implement the Trie class:
 - `word` and `prefix` consist only of lowercase English letters.
 - At most $\mathbf{3*10^4}$ calls **in total** will be made to `insert`, `search`, and `startsWith`.
 
-## Hints
+## Hints & Solution
 
 <details>
  <summary>Hint 1</summary>
- Each character can have a different character following after.
+ Each character can have different characters following after it.
 </details>
 <details>
  <summary>Hint 2</summary>
  How do we know if it's the end of the word?
 </details>
 
-
-## Solutions
-
-```py
-
-class Trie:
-
-    def __init__(self):
-        self.children = {}
-        self.ends = False
-
-    def insert(self, word: str) -> None:
-        p = self
-        for c in word:
-            if c not in p.children:
-                p.children[c] = Trie()
-            p = p.children[c]
-        p.ends = True
-
-
-    def search(self, word: str) -> bool:
-        p = self
-        for c in word:
-            if c not in p.children:
-                return False
-            p = p.children[c]
-        return p.ends
-
-    def startsWith(self, prefix: str) -> bool:
-        p = self
-        for c in prefix:
-            if c not in p.children:
-                return False
-            p = p.children[c]
-        return True
-
-
-# Your Trie object will be instantiated and called as such:
-# obj = Trie()
-# obj.insert(word)
-# param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix)
-
- ```
+[Solution](208.py)
